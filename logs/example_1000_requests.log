@@ -1,0 +1,63 @@
+Beginning example script at 2021-09-11 16:58:30.297566
+
+Created reverse sorted list of 1000 users
+
+Sending 1000 requests in batch
+
+Beginning chunk 1 of 10
+100 requests complete in 0.1765
+Sleeping 0.8235
+Beginning chunk 2 of 10
+100 requests complete in 0.193
+Sleeping 0.807
+Beginning chunk 3 of 10
+100 requests complete in 0.2018
+Sleeping 0.7982
+Beginning chunk 4 of 10
+100 requests complete in 0.1946
+Sleeping 0.8054
+Beginning chunk 5 of 10
+100 requests complete in 0.2316
+Sleeping 0.7683
+Beginning chunk 6 of 10
+100 requests complete in 0.1912
+Sleeping 0.8088
+Beginning chunk 7 of 10
+100 requests complete in 0.4273
+Sleeping 0.5726
+Beginning chunk 8 of 10
+100 requests complete in 0.202
+Sleeping 0.798
+Beginning chunk 9 of 10
+100 requests complete in 0.2046
+Sleeping 0.7954
+Beginning chunk 10 of 10
+100 requests complete in 0.2342
+Sleeping 0.7658
+
+Batch send took 10.08 seconds
+
+Sending 1000 requests in serial
+
+Beginning chunk 1 of 10
+100 requests complete in 9.2593
+Beginning chunk 2 of 10
+100 requests complete in 11.4052
+Beginning chunk 3 of 10
+100 requests complete in 9.2532
+Beginning chunk 4 of 10
+100 requests complete in 9.464
+Beginning chunk 5 of 10
+100 requests complete in 9.3173
+Beginning chunk 6 of 10
+100 requests complete in 9.2369
+Beginning chunk 7 of 10
+100 requests complete in 9.4037
+Beginning chunk 8 of 10
+100 requests complete in 9.1541
+Beginning chunk 9 of 10
+100 requests complete in 9.4827
+Beginning chunk 10 of 10
+100 requests complete in 9.2816
+
+Serial send took 95.28 seconds

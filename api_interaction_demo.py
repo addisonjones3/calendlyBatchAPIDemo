@@ -67,6 +67,7 @@ def send_serial_requests(connection, users):
     serial_end_time = time.time()
     print('')
     print(f'Serial send took {round(serial_end_time - serial_start_time, 2)} seconds')
+    print('')
 
 
 if __name__ == '__main__':
@@ -79,7 +80,7 @@ if __name__ == '__main__':
                            for i in range(0, num_requests_to_send)]))
 
     reverse_sorted_users = sorted(rand_users, key=lambda x: x['id'], reverse=True)
-    print(f'Created reverse sorted list of {len(reverse_sorted_users)}')
+    print(f'Created reverse sorted list of {len(reverse_sorted_users)} users')
     print('')
 
     custio_connection = CustIOAPIConnection(CustIOWorkspaces.demo_workspace)

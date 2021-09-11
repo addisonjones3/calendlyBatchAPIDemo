@@ -33,7 +33,7 @@ class BatchAPIAction:
 
         return resp
 
-    async def send_batch(self, session, verbose_logging=True):
+    async def send_batch(self, session):
         try:
             async with await session.request(
                     method=self.method,
