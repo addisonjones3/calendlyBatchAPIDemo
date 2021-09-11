@@ -23,15 +23,10 @@ def get_credential_values(section_name):
 
     return auth_credentials
 
-# TODO: Figure out super
+# TODO: Move Custio Batch members here where possible
 class BatchAPIConnection:
     def __init__(self, credential_section):
         self.credential_values = get_credential_values(credential_section)
-        # Optional override of request rate limit in config file. Endpoint type required
-        # self.request_rate_limit = endpoint_dict.get('request_rate_limit', request_rate_limits[endpoint_dict['endpoint_type']])
-        # self.credential_values = get_config(self.endpoint_config_name)
-        # self.auth_type = api_action_class.auth_type
-        # self.auth_key = self.get_auth_key(self.credential_values, self.auth_type)
 
     def get_auth_values(self, section_name):
         return
