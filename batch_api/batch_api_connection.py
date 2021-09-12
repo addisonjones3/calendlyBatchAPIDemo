@@ -9,7 +9,7 @@ request_rate_limits = {
 
 
 def get_credential_values(section_name):
-    credentials_filename = os.path.expanduser('~') + '/.custio_creds/credentials.cfg'
+    credentials_filename = os.path.expanduser('~') + '/path/to/credentials.cfg'
     parser = configparser.ConfigParser(interpolation=None)
     parser.read(credentials_filename)
     auth_credentials = {}
@@ -23,7 +23,7 @@ def get_credential_values(section_name):
 
     return auth_credentials
 
-# TODO: Move Custio Batch members here where possible
+# TODO: Move Custio Connection members here where possible
 class BatchAPIConnection:
     def __init__(self, credential_section):
         self.credential_values = get_credential_values(credential_section)

@@ -94,14 +94,23 @@ def get_headers(credential_values, api_action_class):
 
 def create_request(api_action_class, headers, uri_parameter_names=None, uri_param_list_remove_from_json=None,
                    request_dict=None, **kwargs):
+    try:
+        uri_values = [request_dict[id_name] for id_name in uri_parameter_names] if uri_parameter_names else None
 
-    uri_values = [request_dict.get(id_name, None) for id_name in uri_parameter_names] if uri_parameter_names else None
+    except KeyError as ke:
+        print(f'{ke} from uri_parameter_names not found in request_dict')
+        raise ke
 
     # Pass dict removing keys from removal list
-    if uri_param_list_remove_from_json:
-        json_payload = {k: v for k, v in request_dict.items() if k not in uri_param_list_remove_from_json}
-    else:
-        json_payload = request_dict
+    try:
+        if uri_param_list_remove_from_json:
+            json_payload = {k: v for k, v in request_dict.items() if k not in uri_param_list_remove_from_json}
+        else:
+            json_payload = request_dict
+
+    except KeyError as ke:
+        print(f'{ke} from uri_param_list_remove_from_json not found in request_dict')
+        raise ke
 
     request = api_action_class(
         headers=headers,

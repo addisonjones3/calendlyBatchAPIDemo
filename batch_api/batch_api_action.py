@@ -1,9 +1,4 @@
 import requests
-import configparser
-import os
-import logging
-import asyncio
-import aiohttp
 
 
 class BatchAPIMethods:
