@@ -2,6 +2,7 @@ import base64
 import asyncio
 import aiohttp
 import time
+from math import ceil
 from batch_api.batch_api_connection import BatchAPIConnection
 from batch_api.custio_api_actions import CustIOAuthTypes
 
@@ -37,19 +38,31 @@ class CustIOAPIConnection(BatchAPIConnection):
 
     def send_requests(self, api_action_class, request_dict_list=None, uri_parameter_names=None,
                       uri_param_list_remove_from_json=None, use_batch_send=False):
+        """
+        Parameters
+        ----------
+        :param api_action_class: Pass the class name of the action to be created
+        :param request_dict_list: List of dictionaries representing the data to be sent
+        :param uri_parameter_names: Names of dict key values to be passed into URI
+        :param uri_param_list_remove_from_json: Names of dict members to be removed from dict after passed to URI
+        :param use_batch_send: True/False flag to use aiohttp async send functionality
+        :return: None
+        """
         headers = get_headers(self.credential_values, api_action_class)
         # print(headers)
 
+        chunk_count = ceil(len(request_dict_list) / api_action_class.request_rate_limit)
+
         for i, request_chunk in enumerate(_chunk_rate_limited_requests(request_dict_list, api_action_class.request_rate_limit)):
-            print(f'Beginning chunk {i + 1} of {int(len(request_dict_list) / api_action_class.request_rate_limit)}')
+            print(f'Beginning chunk {i + 1} of {chunk_count}')
             request_list = []
-            for request in request_chunk:
+            for request_dict in request_chunk:
 
                 request = create_request(api_action_class,
                                          headers,
                                          uri_parameter_names=uri_parameter_names,
                                          uri_param_list_remove_from_json=uri_param_list_remove_from_json,
-                                         request_dict=request
+                                         request_dict=request_dict
                                          )
 
                 request_list.append(request)
